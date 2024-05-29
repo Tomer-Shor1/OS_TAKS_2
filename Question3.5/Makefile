@@ -1,14 +1,14 @@
 # Name of the executable
-TARGET = ttt
+TARGET = mynetcat 
 
 # Source files
-SRC = roi.c
+SRC = mync.c 
 
 # Compiler
 CC = gcc
 
 # Compiler flags
-CFLAGS = -Wall -Wextra -std=c11
+CFLAGS = -Wall -Wextra -std=c11 -g
 
 # Default rule - compile the program
 all: $(TARGET)

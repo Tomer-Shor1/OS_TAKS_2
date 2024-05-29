@@ -23,7 +23,7 @@ int validate_strategy(const char *strategy) {
     int digits[10] = {0}; //
     for (int i = 0; i < 9; i++) {
         if (strategy[i] < '1' || strategy[i] > '9') return 0;
-        if (digits[strategy[i] - '0']++) return 0; // ספרה שהופיעה כבר
+        if (digits[strategy[i] - '0']++) return 0; // 
     }
     return 1;
 }
@@ -32,7 +32,6 @@ int validate_strategy(const char *strategy) {
 void print_board(const char board[9]) {
     for (int i = 0; i < 9; i++) {
         printf("%c", board[i]);
-        fflush(stdout);
         if ((i + 1) % 3 == 0) printf("\n");
     }
 }
@@ -57,7 +56,6 @@ int check_win(const char board[9], char mark) {
 void ttt(const char *strategy) {
     if (!validate_strategy(strategy)) {
         printf("Error\n");
-        fflush(stdout); 
         return;
     }
 
@@ -70,7 +68,7 @@ void ttt(const char *strategy) {
 
     print_board(board);
     printf("\n");
-    fflush(stdout);
+
 
     for (int turn = 0; turn < 9; turn++) {
         if (turn % 2 == 0) { // if its the computer's turn.
@@ -79,7 +77,6 @@ void ttt(const char *strategy) {
                 if (board[pos] == ' ') { // if the position is empty.
                     board[pos] = 'X';
                     printf("%d\n", pos + 1); //   
-                    fflush(stdout);
                     break;
                 }
             }
@@ -88,7 +85,6 @@ void ttt(const char *strategy) {
             while (1) {
             if (scanf("%d", &move) != 1 || move < 1 || move > 9 || board[move - 1] != ' ') {  // if the input is invalid.
                 printf("Invalid move. Please try again.\n");
-                fflush(stdout);
             } else {
                 board[move - 1] = 'O';
                 break;
@@ -101,11 +97,9 @@ void ttt(const char *strategy) {
 
         if (check_win(board, 'X')) {
             printf("I win\n");
-            fflush(stdout);
             return;
         } else if (check_win(board, 'O')) {
             printf("I lost\n");
-            fflush(stdout);
             return;
         }
     }
@@ -116,7 +110,6 @@ void ttt(const char *strategy) {
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         printf("Error\n");
-        fflush(stdout);
         return 1;
     }
     ttt(argv[1]);
